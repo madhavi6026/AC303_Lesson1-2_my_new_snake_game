@@ -108,7 +108,7 @@ $(document).ready(function(){
 		}
 
 		switch(player.direction){ //try to get direction of player - what is the number
-			case 0; 
+			case 0: 
 			player.x += 1; break; 
 
 			case 1:
