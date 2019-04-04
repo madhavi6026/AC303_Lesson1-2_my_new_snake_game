@@ -16,8 +16,8 @@ $(document).ready(function(){
 
 	//Set up candy and player objects 
 	var candy = {
-		x: 0, 
-		y: 0, 
+		x: 10, 
+		y: 10, 
 		alive: false
 	};
 
@@ -54,11 +54,14 @@ $(document).ready(function(){
 
 	function update(){
 		if(keyPressed){
-			if(keyPressed == rightKey && player.direction!=1)player.direction = 0; //change direction of snake 
-			if(keyPressed == leftKey && player.direction!=0)player.direction = 1;
-			if(keyPressed == upKey && player.direction!=3)player.direction = 2; 
-			if(keyPressed == downKey && player.direction!=2)player.direction = 3;  
+			if(keyPressed == rightKey && player.direction!=1){player.direction = 0; console.log("right");}//change direction of snake 
+			if(keyPressed == leftKey && player.direction!=0){player.direction = 1;console.log("left");}
+			if(keyPressed == upKey && player.direction!=3){player.direction = 2; console.log("up");}
+			if(keyPressed == downKey && player.direction!=2){player.direction = 3; console.log("down");} 
+			console.log("pressed2");
+
 		}
+		console.log("not_pressed");
 
 		if(candy.alive){
 			candy.x = Math.floor(Math.random() * gridNum);
@@ -87,8 +90,9 @@ $(document).ready(function(){
 
 		if(player.tail > 1){ //if the player eats himself then the game ends 
 			for(var i = 1; i < player.tail; i++){ //we call updates 
-				if(player.x == snakebody[i][0] && player.y == snakeBody[i][1]){ 
+				if(player.x == snakeBody[i][0] && player.y == snakeBody[i][1]){ 
 					player.alive = false;
+					console.log("clean interval");
 					clearInterval(updates); //stop the update to end the game 
 				}
 				
@@ -99,6 +103,7 @@ $(document).ready(function(){
 
 		if(player.x >= gridNum || player.x < 0 || player.y >= gridNum || player.y < 0){ //if player hits the wall then the game ends 
 			player.alive = false; 
+			console.log("clean interval2");
 			clearInterval(updates); //stop the update to end the game 
 		}
 
@@ -149,6 +154,7 @@ $(document).ready(function(){
 	//'If any keys are pressed' event 
 	$(window).on("keydown", function(event){
 		keyPressed = event.which; //get keypress value and store it within this event 
+		console.log("pressed");
 	});
 
 	update();
