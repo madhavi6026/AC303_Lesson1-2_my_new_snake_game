@@ -63,7 +63,7 @@ $(document).ready(function(){
 		}
 		console.log("not_pressed");
 
-		if(candy.alive){
+		if(!candy.alive){
 			candy.x = Math.floor(Math.random() * gridNum);
 			candy.y = Math.floor(Math.random() * gridNum); //check if snake eats candy (random coordinate of candy) 
 		
